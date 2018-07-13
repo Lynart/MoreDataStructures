@@ -23,6 +23,38 @@ namespace AmazonPractice
 
             //Transverse and assign to hashmap
             VerticalSum(bTree);
+            Console.WriteLine("Max Width: " + MaxWidthViaQueue(bTree.Root));
+        }
+
+        /// <summary>
+        /// Prints out the max width of the tree
+        /// </summary>
+        private static int MaxWidthViaQueue(BinaryTreeNode<int> node)
+        {
+            if (node == null)
+                return 0;
+
+            int maxWidth = 0;
+
+            Queue<BinaryTreeNode<int>> q = new Queue<BinaryTreeNode<int>>();
+            q.Enqueue(node);
+
+            while (q.Count != 0)
+            {
+                int count = q.Count;
+                maxWidth = Math.Max(maxWidth, q.Count);
+
+                while(count-- > 0)
+                {
+                    var temp = q.Dequeue();
+                    if (temp.Left != null)
+                        q.Enqueue(temp.Left);
+                    if (temp.Right != null)
+                        q.Enqueue(temp.Right);
+                }
+            }
+
+            return maxWidth;
         }
 
         /// <summary>
