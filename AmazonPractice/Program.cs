@@ -20,10 +20,22 @@ namespace AmazonPractice
             bTree.Root.Left.Right = new BinaryTreeNode<int>(5);
             bTree.Root.Right.Right = new BinaryTreeNode<int>(6);
             bTree.Root.Right.Left = new BinaryTreeNode<int>(7);
+            bTree.Root.Right.Left.Left = new BinaryTreeNode<int>(8);
 
             //Transverse and assign to hashmap
             VerticalSum(bTree);
             Console.WriteLine("Max Width: " + MaxWidthViaQueue(bTree.Root));
+            Console.WriteLine("Max Height: " + MaxHeight(bTree.Root));
+        }
+
+        private static int MaxHeight(BinaryTreeNode<int> node)
+        {
+            if (node == null) return 0;
+
+            int lHeight = MaxHeight(node.Left);
+            int rHeight = MaxHeight(node.Right);
+
+            return lHeight > rHeight ? lHeight + 1 : rHeight + 1;
         }
 
         /// <summary>
