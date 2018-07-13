@@ -28,6 +28,10 @@ namespace AmazonPractice
             Console.WriteLine("Max Height: " + MaxHeight(bTree.Root));
         }
 
+        /// <summary>
+        /// Returns the max height of a binary tree
+        /// </summary>
+
         private static int MaxHeight(BinaryTreeNode<int> node)
         {
             if (node == null) return 0;
@@ -39,7 +43,7 @@ namespace AmazonPractice
         }
 
         /// <summary>
-        /// Prints out the max width of the tree
+        /// Returns the max width of a binary tree
         /// </summary>
         private static int MaxWidthViaQueue(BinaryTreeNode<int> node)
         {
